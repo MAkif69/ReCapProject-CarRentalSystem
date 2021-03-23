@@ -15,9 +15,9 @@ namespace DataAccess.Concrete.EntityFramework
             using (var context = new RentalDBContex())
             {
                 var result = from operationClaim in context.OperationClaims
-                             join userOperationClaim in context.UserOperationClaims
-                                 on operationClaim.Id equals userOperationClaim.OperationClaimId
-                             where userOperationClaim.UserID == user.UserID
+                             join userOperationsClaim in context.UserOperationsClaims
+                                 on operationClaim.Id equals userOperationsClaim.OperationClaimId
+                             where userOperationsClaim.Id == user.UserID
                              select new OperationClaim { Id = operationClaim.Id, Name = operationClaim.Name };
                 return result.ToList();
 
